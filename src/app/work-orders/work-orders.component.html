@@ -2,6 +2,7 @@
   <div class="col col-12">
     <h1>Work Orders</h1>
     <ng-select
+      [(ngModel)]="selectedTimescale"
       class="timescale-select"
       [items]="timescales"
       [searchable]="false"
@@ -11,5 +12,5 @@
     >
     </ng-select>
   </div>
-    <app-timeline-schedule></app-timeline-schedule>
+  <app-timeline-schedule></app-timeline-schedule>
 </div>
