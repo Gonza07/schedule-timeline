@@ -1,15 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-*{
-    font-family: "Circular-Std"
+* {
+  font-family: "Circular-Std";
 }
 
 // styles.scss
 
 /* Global styling for ng-select */
 
-.ng-select{
-    width: 33% !important;
+.ng-select {
+  width: 170px !important;
 }
+
+.ng-select .ng-value {
+  margin-left: auto;
+  margin-right: 10px;
+  font-weight: 500;
+  color: #0000ff;
+  font-weight: bold;
+}
+
 .ng-select-container {
   min-height: 32px;
   border: 1px solid #d0d5dd;
@@ -30,6 +39,7 @@
 .ng-option {
   padding: 8px 12px;
   font-size: 14px;
+  background-color: #fff;
 }
 
 /* Hover */
@@ -42,4 +52,9 @@
   background-color: #e8f0ff;
   color: blue;
   font-weight: 500;
+}
+
+li {
+  list-style: none;
+  margin-top: 30px;
 }

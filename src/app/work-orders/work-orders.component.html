@@ -4,10 +4,19 @@
     <ng-select
       class="timescale-select"
       [items]="timescales"
+      [searchable]="false"
       bindLabel="label"
       bindValue="value"
       placeholder="Timescale"
     >
     </ng-select>
+    <div class="ml-4">
+        <h3 class="work-centers-title">Work Center</h3>
+        <ul>
+            <li *ngFor="let center of workCenters">
+                {{center.label}}
+            </li>
+        </ul>
+    </div>
   </div>
 </div>
