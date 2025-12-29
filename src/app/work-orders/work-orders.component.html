@@ -1,1 +1,13 @@
-<p>work-orders works!</p>
+<div class="container-fluid worders">
+  <div class="col col-4">
+    <h1>Work Orders</h1>
+    <ng-select
+      class="timescale-select"
+      [items]="timescales"
+      bindLabel="label"
+      bindValue="value"
+      placeholder="Timescale"
+    >
+    </ng-select>
+  </div>
+</div>

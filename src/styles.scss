@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    font-family: "Circular-Std"
+}
+
+// styles.scss
+
+/* Global styling for ng-select */
+
+.ng-select{
+    width: 33% !important;
+}
+.ng-select-container {
+  min-height: 32px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 8px 8px 8px 8px;
+  font-size: 14px;
+  background-color: #fff;
+  box-shadow: 1px 2px 4px rgb(136, 136, 136);
+  width: 1px;
+}
+
+.ng-select-opened .ng-select-container {
+  border-color: #5b8def;
+  box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.2);
+}
+
+/* Options */
+.ng-option {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Hover */
+.ng-option:hover {
+  background-color: #f2f4f7;
+}
+
+/* Selected option */
+.ng-option-selected {
+  background-color: #e8f0ff;
+  color: blue;
+  font-weight: 500;
+}
