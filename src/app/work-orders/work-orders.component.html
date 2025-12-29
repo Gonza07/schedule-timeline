@@ -1,5 +1,5 @@
 <div class="container-fluid worders">
-  <div class="col col-4">
+  <div class="col col-12">
     <h1>Work Orders</h1>
     <ng-select
       class="timescale-select"
@@ -10,13 +10,6 @@
       placeholder="Timescale"
     >
     </ng-select>
-    <div class="ml-4">
-        <h3 class="work-centers-title">Work Center</h3>
-        <ul>
-            <li *ngFor="let center of workCenters">
-                {{center.label}}
-            </li>
-        </ul>
-    </div>
   </div>
+    <app-timeline-schedule></app-timeline-schedule>
 </div>

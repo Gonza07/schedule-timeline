@@ -6,7 +6,7 @@ import { WorkOrderDetailsComponent } from '../../work-order-details/work-order-d
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [WorkOrdersComponent,TimelineScheduleComponent, WorkOrderDetailsComponent],
+  imports: [WorkOrdersComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
