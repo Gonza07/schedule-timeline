@@ -1,5 +1,5 @@
 <div class="container-fluid worders">
-  <div class="col col-12">
+  <div class="col col-12 margin">
     <h1>Work Orders</h1>
     <ng-select
       [(ngModel)]="selectedTimescale"
@@ -12,5 +12,5 @@
     >
     </ng-select>
   </div>
-  <app-timeline-schedule></app-timeline-schedule>
 </div>
+<app-timeline-schedule [timeScale]="selectedTimescale"></app-timeline-schedule>

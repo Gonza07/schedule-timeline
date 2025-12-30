@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './work-orders.component.scss',
 })
 export class WorkOrdersComponent {
-  public selectedTimescale: string = 'month';
+  public selectedTimescale:'hour' | 'day' | 'week' | 'month' = 'month';
   public timescales = [
     { value: 'hour', label: 'Hour' },
     { value: 'day', label: 'Day' },

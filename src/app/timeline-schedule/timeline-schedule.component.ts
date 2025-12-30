@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import dayjs from 'dayjs';
 
 @Component({
@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
   styleUrl: './timeline-schedule.component.scss',
 })
 export class TimelineScheduleComponent implements OnInit {
+  @Input() timeScale: 'hour' | 'day' | 'week' | 'month' = 'day';
   public days: dayjs.Dayjs[] = [];
   public today = dayjs().startOf('day');
   public timelineStart = this.today.subtract(14, 'day');
