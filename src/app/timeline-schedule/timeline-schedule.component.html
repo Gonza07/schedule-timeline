@@ -1,8 +1,32 @@
-<div class="worter">
-  <h3 class="work-centers-title">Work Center</h3>
-  <ul>
-    <li *ngFor="let center of workCenters">
+<div class="timeline">
+
+  <!-- SCHEDULE HEADER -->
+  <div class="timeline-header">
+    <div class="timeline-header-cell work-center-header">
+      Work Center
+    </div>
+
+    <div
+      class="timeline-header-cell"
+      *ngFor="let day of days"
+    >
+      {{ day.format('DD MMM') }}
+    </div>
+  </div>
+
+  <!-- SCHEDULE BODY -->
+  <div
+    class="timeline-row"
+    *ngFor="let center of workCenters"
+  >
+    <div class="timeline-cell work-center-cell">
       {{ center.label }}
-    </li>
-  </ul>
+    </div>
+
+    <div
+      class="timeline-cell"
+      *ngFor="let day of days"
+    ></div>
+  </div>
+
 </div>
