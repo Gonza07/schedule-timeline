@@ -1,6 +1,8 @@
 <div class="container-fluid worders">
-  <div class="col col-12 margin">
+  <!-- HEADER -->
+  <div class="header">
     <h1>Work Orders</h1>
+
     <ng-select
       [(ngModel)]="selectedTimescale"
       class="timescale-select"
@@ -12,5 +14,23 @@
     >
     </ng-select>
   </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+    <!-- TIMELINE -->
+    <div class="timeline-container">
+      <app-timeline-schedule
+        [timeScale]="selectedTimescale"
+        (orderSelected)="onOrderSelected($event)"
+      ></app-timeline-schedule>
+    </div>
+
+    <!-- DETAILS PANEL -->
+    <app-work-order-details
+      *ngIf="selectedOrder"
+      class="details-container"
+      [order]="selectedOrder"
+      (close)="closeDetails()"
+    ></app-work-order-details>
+  </div>
 </div>
-<app-timeline-schedule [timeScale]="selectedTimescale"></app-timeline-schedule>

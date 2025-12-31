@@ -1,1 +1,53 @@
-<p>work-order-details works!</p>
+<div class="panel">
+  <div class="header">
+    <button class="cancel" (click)="onCancel()">Cancelar</button>
+    <button class="create" (click)="onCreate()">Crear</button>
+  </div>
+
+  <div class="content">
+    <!-- work Order / work center name -->
+    <div class="field">
+      <label for="work-order-name">Work Order</label>
+      <input
+        type="text"
+        id="work-order-name"
+        [value]="order?.label"
+        readonly
+        placeholder="Acme Inc."
+      />
+    </div>
+
+    <!-- status -->
+    <div class="field">
+      <label for="status">Status</label>
+      <select id="status" [value]="order?.status" disabled>
+        <option value="open">Open</option>
+        <option value="in-progress">In progress</option>
+        <option value="complete">Complete</option>
+        <option value="blocked">Blocked</option>
+      </select>
+    </div>
+
+    <!-- start date -->
+    <div class="field">
+      <label for="start-date">Start Date</label>
+      <input
+        type="date"
+        id="start-date"
+        [value]="formatDate(order?.start)"
+        readonly
+      />
+    </div>
+
+    <!-- end date -->
+    <div class="field">
+      <label for="end-date">End Date</label>
+      <input
+        type="date"
+        id="end-date"
+        [value]="formatDate(order?.end)"
+        readonly
+      />
+    </div>
+  </div>
+</div>

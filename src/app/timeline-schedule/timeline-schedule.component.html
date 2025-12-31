@@ -1,5 +1,4 @@
 <div class="timeline">
-
   <!-- TODAY LINE -->
   <div
     class="today-line"
@@ -7,53 +6,43 @@
     [style.left.px]="todayLineLeft"
   ></div>
 
+
   <!-- SCHEDULE HEADER -->
   <div class="timeline-header">
-    <div class="timeline-header-cell work-center-header">
-      Work Center
-    </div>
+    <div class="timeline-header-cell work-center-header">Work Center</div>
 
-    <div
-      class="timeline-header-cell"
-      *ngFor="let slot of timeSlots"
-    >
+    <div class="timeline-header-cell" *ngFor="let slot of timeSlots">
       {{ formatHeader(slot) }}
     </div>
   </div>
 
+
   <!-- SCHEDULE BODY -->
-  <div
-  class="timeline-row"
-  *ngFor="let center of workCenters"
->
-  <!-- Work center label -->
-  <div class="timeline-cell work-center-cell">
-    {{ center.label }}
+  <div class="timeline-row" *ngFor="let center of workCenters">
+    <!-- work center label -->
+    <div class="timeline-cell work-center-cell">
+      {{ center.label }}
+    </div>
+
+
+    <!-- TIMELINE SLOTS (grid + orders) -->
+    <div class="timeline-slots">
+      <div class="timeline-cell" *ngFor="let slot of timeSlots"></div>
+
+
+      <!-- WORK ORDERS -->
+      <div
+        class="work-order"
+        *ngFor="let order of getOrdersForCenter(center.id)"
+        [style.left.px]="getOrderLeft(order)"
+        [style.width.px]="getOrderWidth(order)"
+        [ngClass]="order.status"
+        (click)="selectOrder(order)"
+      >
+        <span class="work-order-label">{{ order.label }}</span>
+        <span class="work-order-status">{{ order.status }}</span>
+      </div>
+    </div>
   </div>
-
-<!-- TIMELINE SLOTS (grid + orders) -->
-<div class="timeline-slots">
-
-  <!-- Grid cells (solo estructura visual) -->
-  <div
-    class="timeline-cell"
-    *ngFor="let slot of timeSlots"
-  ></div>
-
-  <!-- WORK ORDERS -->
-  <div
-    class="work-order"
-    *ngFor="let order of getOrdersForCenter(center.id)"
-    [style.left.px]="getOrderLeft(order)"
-    [style.width.px]="getOrderWidth(order)"
-    [ngClass]="order.status"
-  >
-    <span class="work-order-label">{{ order.label }}</span>
-    <span class="work-order-status">{{ order.status }}</span>
-  </div>
-
-</div>
 </div>
 
-
-</div>

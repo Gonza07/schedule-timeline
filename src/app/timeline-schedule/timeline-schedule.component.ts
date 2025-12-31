@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import dayjs from 'dayjs';
@@ -20,6 +22,7 @@ dayjs.extend(weekOfYear);
 })
 export class TimelineScheduleComponent implements OnInit, OnChanges {
   @Input() timeScale: 'hour' | 'day' | 'week' | 'month' = 'day';
+  @Output() orderSelected = new EventEmitter<any>();
   public timeSlots: dayjs.Dayjs[] = [];
   public days: dayjs.Dayjs[] = [];
   public today = dayjs().startOf('day');
@@ -28,6 +31,7 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
   public todayIndex: number | null = null;
   public columnWidth = 80;
   public workCenterColumnWidth = 220;
+
   public workCenters = [
     { id: 1, value: 'genesisHardware', label: 'Genesis Hardware' },
     { id: 2, value: 'rodriguesElectrics', label: 'Rodrigues Electrics' },
@@ -173,7 +177,7 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
     }
   }
 
-    private isSameSlot(date: dayjs.Dayjs, slot: dayjs.Dayjs): boolean {
+  private isSameSlot(date: dayjs.Dayjs, slot: dayjs.Dayjs): boolean {
     switch (this.timeScale) {
       case 'hour':
         return date.isSame(slot, 'hour');
@@ -186,42 +190,42 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
         return date.isSame(slot, 'day');
     }
   }
-  
 
   public getOrdersForCenter(centerId: number) {
     return this.mockOrders.filter((o) => o.workCenterId === centerId);
   }
 
   public getOrderLeft(order: any): number {
-  const startIndex = this.timeSlots.findIndex((slot) =>
-    this.isSameSlot(order.start, slot) || order.start.isBefore(slot)
-  );
+    const startIndex = this.timeSlots.findIndex(
+      (slot) => this.isSameSlot(order.start, slot) || order.start.isBefore(slot)
+    );
     if (startIndex < 0) return 0;
 
-    return (
-    this.workCenterColumnWidth +
-    startIndex * this.columnWidth
-  );
+    return this.workCenterColumnWidth + startIndex * this.columnWidth;
   }
 
-public getOrderWidth(order: any): number {
-  const startIndex = this.timeSlots.findIndex((slot) =>
-    this.isSameSlot(order.start, slot) || order.start.isBefore(slot)
-  );
-
-  const reversedIndex = [...this.timeSlots]
-    .reverse()
-    .findIndex((slot) =>
-      this.isSameSlot(order.end, slot) || order.end.isAfter(slot)
+  public getOrderWidth(order: any): number {
+    const startIndex = this.timeSlots.findIndex(
+      (slot) => this.isSameSlot(order.start, slot) || order.start.isBefore(slot)
     );
 
-  if (startIndex < 0 || reversedIndex < 0) {
-    return this.columnWidth;
+    const reversedIndex = [...this.timeSlots]
+      .reverse()
+      .findIndex(
+        (slot) => this.isSameSlot(order.end, slot) || order.end.isAfter(slot)
+      );
+
+    if (startIndex < 0 || reversedIndex < 0) {
+      return this.columnWidth;
+    }
+
+    const endIndex = this.timeSlots.length - 1 - reversedIndex;
+
+    return (endIndex - startIndex + 1) * this.columnWidth;
   }
 
-  const endIndex =
-    this.timeSlots.length - 1 - reversedIndex;
-
-  return (endIndex - startIndex + 1) * this.columnWidth;
-}
+  selectOrder(order: any) {
+    console.log(order);
+    this.orderSelected.emit(order);
+  }
 }
