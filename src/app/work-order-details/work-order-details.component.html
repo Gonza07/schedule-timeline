@@ -1,26 +1,27 @@
 <div class="panel">
-  <div class="header">
-    <button class="cancel" (click)="onCancel()">Cancelar</button>
-    <button class="create" (click)="onCreate()">Crear</button>
+
+  <div class="panel-header">
+    <div class="title-group">
+      <h2>Work Order Details</h2>
+      <p>Specify the dates, name and status for this order</p>
+    </div>
+
+    <div class="actions">
+      <button class="cancel" (click)="onCancel()">Cancel</button>
+      <button class="create" (click)="onCreate()">Create</button>
+    </div>
   </div>
 
   <div class="content">
-    <!-- work Order / work center name -->
+
     <div class="field">
-      <label for="work-order-name">Work Order</label>
-      <input
-        type="text"
-        id="work-order-name"
-        [value]="order?.label"
-        readonly
-        placeholder="Acme Inc."
-      />
+      <label>Work Order Name</label>
+      <input type="text" [value]="order?.label" readonly />
     </div>
 
-    <!-- status -->
     <div class="field">
-      <label for="status">Status</label>
-      <select id="status" [value]="order?.status" disabled>
+      <label>Status</label>
+      <select [value]="order?.status">
         <option value="open">Open</option>
         <option value="in-progress">In progress</option>
         <option value="complete">Complete</option>
@@ -28,26 +29,15 @@
       </select>
     </div>
 
-    <!-- start date -->
     <div class="field">
-      <label for="start-date">Start Date</label>
-      <input
-        type="date"
-        id="start-date"
-        [value]="formatDate(order?.start)"
-        readonly
-      />
+      <label>End date</label>
+      <input type="date" [value]="formatDate(order?.end)" readonly />
     </div>
 
-    <!-- end date -->
     <div class="field">
-      <label for="end-date">End Date</label>
-      <input
-        type="date"
-        id="end-date"
-        [value]="formatDate(order?.end)"
-        readonly
-      />
+      <label>Start date</label>
+      <input type="date" [value]="formatDate(order?.start)" readonly />
     </div>
+
   </div>
 </div>
