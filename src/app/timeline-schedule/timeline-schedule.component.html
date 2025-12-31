@@ -8,9 +8,9 @@
 
     <div
       class="timeline-header-cell"
-      *ngFor="let day of days"
+      *ngFor="let slot of timeSlots"
     >
-      {{ day.format('DD MMM') }}
+      {{ formatHeader(slot) }}
     </div>
   </div>
 
