@@ -1,5 +1,12 @@
 <div class="timeline">
 
+  <!-- TODAY LINE -->
+  <div
+    class="today-line"
+    *ngIf="todayLineLeft !== null"
+    [style.left.px]="todayLineLeft"
+  ></div>
+
   <!-- SCHEDULE HEADER -->
   <div class="timeline-header">
     <div class="timeline-header-cell work-center-header">
@@ -25,7 +32,7 @@
 
     <div
       class="timeline-cell"
-      *ngFor="let day of days"
+      *ngFor="let slot of timeSlots"
     ></div>
   </div>
 

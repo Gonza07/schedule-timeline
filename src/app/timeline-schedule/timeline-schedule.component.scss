@@ -2,6 +2,7 @@
   display: block;
   overflow-x: auto;
   width: 100%;
+  position: relative;
 }
 
 /* HEADER + ROWS */
@@ -91,4 +92,14 @@
 
 .timeline-row:hover {
   background-color: #fafbff;
+}
+
+.today-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #D4D7FF;
+  z-index: 5;
+  pointer-events: none;
 }

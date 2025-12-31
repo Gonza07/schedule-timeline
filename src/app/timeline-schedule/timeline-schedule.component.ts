@@ -25,12 +25,31 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
   public today = dayjs().startOf('day');
   public timelineStart = this.today.subtract(14, 'day');
   public timelineEnd = this.today.add(14, 'day');
+  public todayIndex: number | null = null;
+  public columnWidth = 80;
+  public workCenterColumnWidth = 220;
   public workCenters = [
     { id: 1, value: 'genesisHardware', label: 'Genesis Hardware' },
     { id: 2, value: 'rodriguesElectrics', label: 'Rodrigues Electrics' },
     { id: 3, value: 'konsultingInc', label: 'Konsulting Inc' },
     { id: 4, value: 'mcMarrowDistribution', label: 'McMarrow Distribution' },
     { id: 5, value: 'spartanManufacturing', label: 'Spartan Manufacturing' },
+  ];
+  public mockOrders = [
+    {
+      workCenterId: 3,
+      label: 'Konsulting Inc',
+      start: dayjs().subtract(5, 'day'),
+      end: dayjs().add(10, 'day'),
+      status: 'in-progress',
+    },
+    {
+      workCenterId: 4,
+      label: 'McMarrow Distribution',
+      start: dayjs().subtract(2, 'day'),
+      end: dayjs().add(20, 'day'),
+      status: 'blocked',
+    },
   ];
   public months = dayjs().get('month');
 
@@ -49,6 +68,15 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
     }
   }
 
+  public get todayLineLeft(): number | null {
+    if (this.todayIndex === null || this.todayIndex < 0) return null;
+
+    return (
+      this.workCenterColumnWidth +
+      this.todayIndex * this.columnWidth +
+      this.columnWidth / 2
+    );
+  }
   private generateTimeSlots() {
     this.timeSlots = [];
 
@@ -91,8 +119,29 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
       this.timeSlots.push(current);
       current = current.add(1, unit);
     }
+    this.calculateTodayIndex();
   }
 
+  private calculateTodayIndex(): void {
+    const now = dayjs();
+
+    this.todayIndex = this.timeSlots.findIndex((slot) => {
+      switch (this.timeScale) {
+        case 'hour':
+          return slot.isSame(now, 'hour');
+
+        case 'week':
+          return slot.isSame(now, 'week');
+
+        case 'month':
+          return slot.isSame(now, 'month');
+
+        case 'day':
+        default:
+          return slot.isSame(now, 'day');
+      }
+    });
+  }
   public formatHeader(slot: dayjs.Dayjs) {
     switch (this.timeScale) {
       case 'hour':
