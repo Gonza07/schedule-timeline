@@ -39,16 +39,30 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
     {
       workCenterId: 3,
       label: 'Konsulting Inc',
-      start: dayjs().subtract(5, 'day'),
-      end: dayjs().add(10, 'day'),
+      start: dayjs().subtract(2, 'day'),
+      end: dayjs().add(6, 'day'),
       status: 'in-progress',
     },
     {
       workCenterId: 4,
       label: 'McMarrow Distribution',
-      start: dayjs().subtract(2, 'day'),
-      end: dayjs().add(20, 'day'),
+      start: dayjs().subtract(1, 'day'),
+      end: dayjs().add(9, 'day'),
       status: 'blocked',
+    },
+    {
+      workCenterId: 4,
+      label: 'McMarrow Distribution',
+      start: dayjs().add(11, 'day'),
+      end: dayjs().add(1, 'day'),
+      status: 'blocked',
+    },
+    {
+      workCenterId: 1,
+      label: 'McMarrow Distribution',
+      start: dayjs().subtract(2, 'day'),
+      end: dayjs().add(10, 'day'),
+      status: 'complete',
     },
   ];
   public months = dayjs().get('month');
@@ -158,4 +172,56 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
         return slot.format('DD MMM');
     }
   }
+
+    private isSameSlot(date: dayjs.Dayjs, slot: dayjs.Dayjs): boolean {
+    switch (this.timeScale) {
+      case 'hour':
+        return date.isSame(slot, 'hour');
+      case 'week':
+        return date.isSame(slot, 'week');
+      case 'month':
+        return date.isSame(slot, 'month');
+      case 'day':
+      default:
+        return date.isSame(slot, 'day');
+    }
+  }
+  
+
+  public getOrdersForCenter(centerId: number) {
+    return this.mockOrders.filter((o) => o.workCenterId === centerId);
+  }
+
+  public getOrderLeft(order: any): number {
+  const startIndex = this.timeSlots.findIndex((slot) =>
+    this.isSameSlot(order.start, slot) || order.start.isBefore(slot)
+  );
+    if (startIndex < 0) return 0;
+
+    return (
+    this.workCenterColumnWidth +
+    startIndex * this.columnWidth
+  );
+  }
+
+public getOrderWidth(order: any): number {
+  const startIndex = this.timeSlots.findIndex((slot) =>
+    this.isSameSlot(order.start, slot) || order.start.isBefore(slot)
+  );
+
+  const reversedIndex = [...this.timeSlots]
+    .reverse()
+    .findIndex((slot) =>
+      this.isSameSlot(order.end, slot) || order.end.isAfter(slot)
+    );
+
+  if (startIndex < 0 || reversedIndex < 0) {
+    return this.columnWidth;
+  }
+
+  const endIndex =
+    this.timeSlots.length - 1 - reversedIndex;
+
+  return (endIndex - startIndex + 1) * this.columnWidth;
+}
 }

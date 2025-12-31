@@ -23,17 +23,37 @@
 
   <!-- SCHEDULE BODY -->
   <div
-    class="timeline-row"
-    *ngFor="let center of workCenters"
-  >
-    <div class="timeline-cell work-center-cell">
-      {{ center.label }}
-    </div>
-
-    <div
-      class="timeline-cell"
-      *ngFor="let slot of timeSlots"
-    ></div>
+  class="timeline-row"
+  *ngFor="let center of workCenters"
+>
+  <!-- Work center label -->
+  <div class="timeline-cell work-center-cell">
+    {{ center.label }}
   </div>
+
+<!-- TIMELINE SLOTS (grid + orders) -->
+<div class="timeline-slots">
+
+  <!-- Grid cells (solo estructura visual) -->
+  <div
+    class="timeline-cell"
+    *ngFor="let slot of timeSlots"
+  ></div>
+
+  <!-- WORK ORDERS -->
+  <div
+    class="work-order"
+    *ngFor="let order of getOrdersForCenter(center.id)"
+    [style.left.px]="getOrderLeft(order)"
+    [style.width.px]="getOrderWidth(order)"
+    [ngClass]="order.status"
+  >
+    <span class="work-order-label">{{ order.label }}</span>
+    <span class="work-order-status">{{ order.status }}</span>
+  </div>
+
+</div>
+</div>
+
 
 </div>

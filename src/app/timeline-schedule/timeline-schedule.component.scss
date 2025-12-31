@@ -103,3 +103,37 @@
   z-index: 5;
   pointer-events: none;
 }
+
+.timeline-row {
+  position: relative;
+}
+
+.work-order {
+  position: absolute;
+  top: 6px;
+  height: 36px;
+  border-radius: 8px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Status colors */
+.work-order.in-progress {
+  background: #e8ecff;
+  color: #3b5bff;
+}
+
+.work-order.blocked {
+  background: #fff6e5;
+  color: #ff8a00;
+}
+
+.work-order.complete {
+  background: #e9fbe7;
+  color: #2da44e;
+}
