@@ -40,162 +40,132 @@ export class TimelineScheduleComponent implements OnInit, OnChanges {
     { id: 5, value: 'spartanManufacturing', label: 'Spartan Manufacturing' },
   ];
   public mockOrders = [
-  // =========================
-  // Work Center 1
-  // =========================
-  {
-    workCenterId: 1,
-    label: 'Genesis Hardware',
-    start: dayjs().subtract(4, 'month'),
-    end: dayjs().subtract(1, 'month'),
-    status: 'complete',
-  },
-  {
-    workCenterId: 1,
-    label: 'Genesis Hardware',
-    start: dayjs().subtract(1, 'month'),
-    end: dayjs().add(2, 'month'),
-    status: 'in-progress',
-  },
-  {
-    workCenterId: 1,
-    label: 'Genesis Hardware',
-    start: dayjs().add(3, 'month'),
-    end: dayjs().add(6, 'month'),
-    status: 'blocked',
-  },
+    // =========================
+    // Work Center 1
+    // =========================
+    {
+      workCenterId: 1,
+      label: 'Genesis Hardware',
+      start: dayjs().subtract(4, 'month'),
+      end: dayjs().subtract(1, 'month'),
+      status: 'complete',
+    },
+    {
+      workCenterId: 1,
+      label: 'Genesis Hardware',
+      start: dayjs().subtract(1, 'month'),
+      end: dayjs().add(2, 'month'),
+      status: 'in-progress',
+    },
+    {
+      workCenterId: 1,
+      label: 'Genesis Hardware',
+      start: dayjs().add(3, 'month'),
+      end: dayjs().add(6, 'month'),
+      status: 'blocked',
+    },
 
-  // =========================
-  // Work Center 2
-  // =========================
-  {
-    workCenterId: 2,
-    label: 'Rodrigues Electrics',
-    start: dayjs().subtract(6, 'month'),
-    end: dayjs().subtract(3, 'month'),
-    status: 'complete',
-  },
-  {
-    workCenterId: 2,
-    label: 'Rodrigues Electrics',
-    start: dayjs().subtract(2, 'month'),
-    end: dayjs().add(1, 'month'),
-    status: 'in-progress',
-  },
-  {
-    workCenterId: 2,
-    label: 'Rodrigues Electrics',
-    start: dayjs().add(1, 'month'),
-    end: dayjs().add(4, 'month'),
-    status: 'in-progress',
-  },
+    // =========================
+    // Work Center 2
+    // =========================
+    {
+      workCenterId: 2,
+      label: 'Rodrigues Electrics',
+      start: dayjs().subtract(6, 'month'),
+      end: dayjs().subtract(3, 'month'),
+      status: 'complete',
+    },
+    {
+      workCenterId: 2,
+      label: 'Rodrigues Electrics',
+      start: dayjs().subtract(2, 'month'),
+      end: dayjs().add(1, 'month'),
+      status: 'in-progress',
+    },
+    {
+      workCenterId: 2,
+      label: 'Rodrigues Electrics',
+      start: dayjs().add(1, 'month'),
+      end: dayjs().add(4, 'month'),
+      status: 'in-progress',
+    },
 
-  // =========================
-  // Work Center 3
-  // =========================
-  {
-    workCenterId: 3,
-    label: 'Konsulting Inc',
-    start: dayjs().subtract(5, 'month'),
-    end: dayjs().subtract(2, 'month'),
-    status: 'complete',
-  },
-  {
-    workCenterId: 3,
-    label: 'Konsulting Inc',
-    start: dayjs().subtract(2, 'month'),
-    end: dayjs().add(6, 'month'),
-    status: 'in-progress',
-  },
-  {
-    workCenterId: 3,
-    label: 'Konsulting Inc',
-    start: dayjs().add(5, 'month'),
-    end: dayjs().add(9, 'month'),
-    status: 'blocked',
-  },
+    // =========================
+    // Work Center 3
+    // =========================
+    {
+      workCenterId: 3,
+      label: 'Konsulting Inc',
+      start: dayjs().subtract(5, 'month'),
+      end: dayjs().subtract(2, 'month'),
+      status: 'complete',
+    },
+    {
+      workCenterId: 3,
+      label: 'Konsulting Inc',
+      start: dayjs().subtract(2, 'month'),
+      end: dayjs().add(6, 'month'),
+      status: 'in-progress',
+    },
+    {
+      workCenterId: 3,
+      label: 'Konsulting Inc',
+      start: dayjs().add(5, 'month'),
+      end: dayjs().add(9, 'month'),
+      status: 'blocked',
+    },
 
-  // =========================
-  // Work Center 4
-  // =========================
-  {
-    workCenterId: 4,
-    label: 'McMarrow Distribution',
-    start: dayjs().subtract(3, 'month'),
-    end: dayjs().add(1, 'month'),
-    status: 'in-progress',
-  },
-  {
-    workCenterId: 4,
-    label: 'McMarrow Distribution',
-    start: dayjs().add(1, 'month'),
-    end: dayjs().add(4, 'month'),
-    status: 'blocked',
-  },
-  {
-    workCenterId: 4,
-    label: 'McMarrow Distribution',
-    start: dayjs().add(6, 'month'),
-    end: dayjs().add(10, 'month'),
-    status: 'in-progress',
-  },
+    // =========================
+    // Work Center 4
+    // =========================
+    {
+      workCenterId: 4,
+      label: 'McMarrow Distribution',
+      start: dayjs().subtract(3, 'month'),
+      end: dayjs().add(1, 'month'),
+      status: 'in-progress',
+    },
+    {
+      workCenterId: 4,
+      label: 'McMarrow Distribution',
+      start: dayjs().add(1, 'month'),
+      end: dayjs().add(4, 'month'),
+      status: 'blocked',
+    },
+    {
+      workCenterId: 4,
+      label: 'McMarrow Distribution',
+      start: dayjs().add(6, 'month'),
+      end: dayjs().add(10, 'month'),
+      status: 'in-progress',
+    },
 
-  // =========================
-  // Work Center 5
-  // =========================
-  {
-    workCenterId: 5,
-    label: 'Spartan Manufacturing',
-    start: dayjs().subtract(8, 'month'),
-    end: dayjs().subtract(5, 'month'),
-    status: 'complete',
-  },
-  {
-    workCenterId: 5,
-    label: 'Spartan Manufacturing',
-    start: dayjs().subtract(1, 'month'),
-    end: dayjs().add(2, 'month'),
-    status: 'in-progress',
-  },
-  {
-    workCenterId: 5,
-    label: 'Spartan Manufacturing',
-    start: dayjs().add(3, 'month'),
-    end: dayjs().add(7, 'month'),
-    status: 'blocked',
-  },
-];
+    // =========================
+    // Work Center 5
+    // =========================
+    {
+      workCenterId: 5,
+      label: 'Spartan Manufacturing',
+      start: dayjs().subtract(8, 'month'),
+      end: dayjs().subtract(5, 'month'),
+      status: 'complete',
+    },
+    {
+      workCenterId: 5,
+      label: 'Spartan Manufacturing',
+      start: dayjs().subtract(1, 'month'),
+      end: dayjs().add(2, 'month'),
+      status: 'in-progress',
+    },
+    {
+      workCenterId: 5,
+      label: 'Spartan Manufacturing',
+      start: dayjs().add(3, 'month'),
+      end: dayjs().add(7, 'month'),
+      status: 'blocked',
+    },
+  ];
 
-  // public mockOrders = [
-  //   {
-  //     workCenterId: 3,
-  //     label: 'Konsulting Inc',
-  //     start: dayjs().subtract(2, 'month'),
-  //     end: dayjs().add(6, 'month'),
-  //     status: 'in-progress',
-  //   },
-  //   {
-  //     workCenterId: 4,
-  //     label: 'McMarrow Distribution',
-  //     start: dayjs().subtract(1, 'month'),
-  //     end: dayjs().add(9, 'month'),
-  //     status: 'blocked',
-  //   },
-  //   {
-  //     workCenterId: 4,
-  //     label: 'McMarrow Distribution',
-  //     start: dayjs().add(11, 'month'),
-  //     end: dayjs().add(1, 'month'),
-  //     status: 'blocked',
-  //   },
-  //   {
-  //     workCenterId: 1,
-  //     label: 'McMarrow Distribution',
-  //     start: dayjs().subtract(2, 'month'),
-  //     end: dayjs().add(10, 'month'),
-  //     status: 'complete',
-  //   },
-  // ];
   public months = dayjs().get('month');
 
   ngOnInit(): void {
